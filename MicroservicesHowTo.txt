@@ -1,0 +1,105 @@
+
+To build micros. with Spring Boot -> Spring Cloud
+Kubernetes -> For containers(Docker) to work together
+Eureka(Load balancing requests) -> Centralize multiple instances of microservices.
+OpenFeign -> Microservice communication  
+
+DOCKER
+https://www.baeldung.com/dockerizing-spring-boot-application
+- Isolated environment for running an application (no need to download any extras)
+- By adding dockerfile creates image, start a container using the image
+- To create image = docker build -t name .  (. is reference to current directory)
+- To see all images on the computer = docker image ls
+
+
+ZIPKIN:
+- To monitor distributed architectures
+- Monitor and troubleshoot requests -dependency diagram
+
+K8s
+Orchestration tool for containers
+
+EUREKA
+Client-side service discovery without hardcoding hostname and port
+Client retrieves list of all connected peers of service registry
+To be informed about there is a client, sends heartbeat signal to registry
+
+OPENFEIGN
+Discovery aware SpringRestTemplate 
+For interafces to communicate with endpoints
+Without service URLs, using service names implemented at runtime
+Clients ,implemented on server side -> @Controller , on client-side -> @FeignClient
+
+--HOW TO
+Service registry (Eureka)
+Eureka client
+Spring cloud Netflix Feign Client
+
+
+
+-----------Steps--------------------------
+1.postgres server running as docker-container
+2.configure postgres
+3.Create table with hibernate
+4. Send post requests to test database connection
+5.Create another microservice
+
+
+Communication ways for microservices------------------------------------------
+-HTTP
+-Message communication
+-Event driven communication
+
+
+--WORK-LOG--------------------------------------------------------------------
+Day 1
+- Search micros. in java 
+- Create microservice with spring boot
+
+Day 2
+Docker
+- microservice connection with its own database
+- Start to create second microservice
+
+Day 3												
+- Within docker file, add fraud service
+- Create another database inside same server and connect it to second database
+- Connect micros. with HTTP
+- start eureka server
+
+Day 4
+- Add eurekaclients (for each application.yml) monitor on eureka
+- Make micros. openfeign client(wrapper for HTTP comm.)
+- Connection with client (checked: pom files 
+			import is needed from another module)
+Day 5
+- Add another module as dependency to main module
+- Search Docker
+- Get images of microservices (docker)
+		- mvn clean execute jar file, java -jar (error no main file *chnage manifest file (not working))
+
+Day 6
+- Builded image
+- To build image: docker build -t partdefinitionmodule -f target/classes/Dockerfile .
+
+
+
+
+
+TODO
+get images of microservices
+put images into docker-compose file and pom files
+eliminate eureka server and pass to kubernetes
+
+
+
+
+
+
+
+
+
+
+
+
+
